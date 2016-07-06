@@ -1,13 +1,96 @@
 <!doctype html>
 <head>
 <style>
+html {
+    background: url("back.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
 body {
-    background-color: "#888888";
+    margin: 0;
+}
+
+#main {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: table;
+    margin: 0;
+}
+
+#center {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+#title {
+    font-size: 36px;
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+#subtitle {
+    font-size: 24px;
+    color: #BBBBBB;
+    margin: 30px;
+    text-shadow: 2px 2px black;
+}
+
+#upload_form {
+    display: none;
+}
+
+#choose_file {
+    background-color: rgb(50, 100, 75);
+    font-size: 24px;
+    display: inline-block;
+    float: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    color: #DDDDDD;
+    border-radius: 8px;
+    text-decoration: none;
 }
 </style>
+
+<script>
+    window.onload = function() {
+        document.getElementById("img_file").onchange = function() {
+            document.getElementById("upload_btn").click();
+        };
+
+        document.getElementById("choose_file").onclick = function() {
+            document.getElementById("img_file").click();
+        }
+    }
+</script>
 </head>
 <body>
     <div id="main">
-        Internet image hosting, 2016-style.
+        <div id="center">
+            <div id="title">
+                Internet image hosting, 2016-style.
+            </div>
+            <div id="subtitle">
+            Unlimited free space, no registration required.<br />
+            Start sharing here:
+            </div>
+
+            <a id="choose_file" role="button" href="#">Choose a file</a>
+
+            <form action="upload" method="GET" id="upload_form">
+                <input type="file" name="img" id="img_file">
+                <input type="submit" value="upload" id="upload_btn">
+            </form>
+        </div>
     </div>
 </body>
